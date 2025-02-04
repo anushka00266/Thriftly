@@ -32,25 +32,25 @@ Thriftly is a platform that connects users who want to sell or buy pre-loved ite
 
 ### Steps
 
-Step 1: Clone the Repository
+Step 1: Clone the Repository :
          git clone <repository-url>
          cd thriftly
          
-Step 2: Create and Activate a Virtual Environment
+Step 2: Create and Activate a Virtual Environment :
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
-Step 3: Install Dependencies
+Step 3: Install Dependencies :
 pip install -r requirements.txt
 
-Step 4: Apply Migrations
+Step 4: Apply Migrations :
 python manage.py makemigrations
 python manage.py migrate
 
-Step 5: Run the Development Server
+Step 5: Run the Development Server :
 python manage.py runserver
 
-Step 6: Access the Application
+Step 6: Access the Application :
 Open your browser and go to:http://127.0.0.1:8000/
          
    
