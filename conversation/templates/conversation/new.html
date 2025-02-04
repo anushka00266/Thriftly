@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block title %}New Conversation{% endblock %}
+
+{% block content %}
+<h1 class="mb-6 text-3xl text-gray-900">New Conversation</h1> 
+
+<form method="post" action=".">
+    {% csrf_token %}
+    <div class="space-y-4">
+        {{ form.as_p }}
+    </div>
+    <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
+</form>
+
+<style>
+    
+    h1, p, input, textarea, label {
+        color: black !important;
+    }
+
+    input, textarea {
+        color: black !important;
+        background-color: white !important;
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
+    }
+</style>
+{% endblock %}

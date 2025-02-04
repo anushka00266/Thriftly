@@ -1,0 +1,100 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Shipping Details{% endblock %}
+
+{% block content %}
+<style>
+    .custom-form-input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        color: black; 
+        background-color: #f4f4f4; 
+    }
+
+    .custom-form-input:focus {
+        outline: none;
+        border-color: #4CAF50; 
+        background-color: #e9f7e3; 
+    }
+
+    .custom-form-textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        color: black; 
+        background-color: #f4f4f4;  
+        resize: vertical;
+    }
+
+    .custom-form-textarea:focus {
+        outline: none;
+        border-color: #4CAF50;  /* Green border when focused */
+        background-color: #e9f7e3;  /* Light green background when focused */
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-button {
+        padding: 12px 30px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-button:hover {
+        background-color: #45a049;  /* Darker green on hover */
+    }
+</style>
+
+<div class="container mx-auto px-6 py-12">
+    <div class="form-container">
+        <h1 class="text-3xl font-semibold text-teal-600 mb-6">Shipping Details for {{ item.name }}</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_full_name" class="block text-lg font-medium text-teal-600">Full Name</label>
+                <input type="text" name="full_name" class="custom-form-input" id="id_full_name" placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group mt-4">
+                <label for="id_address" class="block text-lg font-medium text-teal-600">Shipping Address</label>
+                <textarea name="address" class="custom-form-textarea" id="id_address" placeholder="Enter your shipping address"></textarea>
+            </div>
+
+            <div class="form-group mt-4">
+                <label for="id_phone_number" class="block text-lg font-medium text-teal-600">Phone Number</label>
+                <input type="text" name="phone_number" class="custom-form-input" id="id_phone_number" placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group mt-4">
+                <label for="id_city" class="block text-lg font-medium text-teal-600">City</label>
+                <input type="text" name="city" class="custom-form-input" id="id_city" placeholder="Enter your city">
+            </div>
+
+            <div class="form-group mt-4">
+                <label for="id_postal_code" class="block text-lg font-medium text-teal-600">Postal Code</label>
+                <input type="text" name="postal_code" class="custom-form-input" id="id_postal_code" placeholder="Enter your postal code">
+            </div>
+
+            <button type="submit" class="form-button mt-6">Confirm Shipping Details</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

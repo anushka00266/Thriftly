@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-6 py-12">
+    <h1 class="text-3xl font-semibold text-teal-600">Order Confirmed</h1>
+    
+    <p>Your order for {{ order.item.name }} has been confirmed.</p>
+    <p><strong>Shipping Details:</strong></p>
+    <ul>
+        <li>Name: {{ order.shipping_full_name }}</li>
+        <li>Address: {{ order.shipping_address }}</li>
+        <li>Phone Number: {{ order.shipping_phone_number }}</li>
+        <li>City: {{ order.shipping_city }}</li>
+        <li>Postal Code: {{ order.shipping_postal_code }}</li>
+    </ul>
+</div>
+{% endblock %}

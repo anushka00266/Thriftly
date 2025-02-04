@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <div class="mt-6 px-6 py-12 bg-gradient-to-r from-teal-400 to-blue-500 rounded-xl">
+        <h2 class="mb-12 text-3xl font-semibold text-white text-center">Newest items</h2>
+
+        <!-- Displaying Items -->
+        <div class="grid grid-cols-3 gap-3">
+            {% for item in page_obj.object_list %}
+                <div class="group">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <div class="overflow-hidden rounded-xl transform group-hover:scale-105 transition-all duration-300">
+                            <img src="{{ item.image.url }}" class="w-full h-64 object-cover">
+                        </div>
+
+                        <div class="p-6 bg-white rounded-b-xl group-hover:bg-teal-500 transition-all duration-300">
+                            <h2 class="text-2xl text-gray-800 group-hover:text-white">{{ item.name }}</h2>
+                            <p class="text-gray-500 group-hover:text-white">Price: ₹{{ item.price|floatformat:0 }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                <p class="text-center text-white">No items available at the moment.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="mt-6 text-center">
+            <span class="text-white">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            <div class="mt-4">
+                <span class="inline-block mx-1">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1" class="text-white bg-teal-500 hover:bg-teal-700 px-4 py-2 rounded-lg transition">First</a>
+                    {% endif %}
+                </span>
+                <span class="inline-block mx-1">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}" class="text-white bg-teal-500 hover:bg-teal-700 px-4 py-2 rounded-lg transition">Previous</a>
+                    {% endif %}
+                </span>
+                <span class="inline-block mx-1">
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="text-white bg-teal-500 hover:bg-teal-700 px-4 py-2 rounded-lg transition">Next</a>
+                    {% endif %}
+                </span>
+                <span class="inline-block mx-1">
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.paginator.num_pages }}" class="text-white bg-teal-500 hover:bg-teal-700 px-4 py-2 rounded-lg transition">Last</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1 class="text-4xl font-semibold text-white mb-8 text-center">{{ title }}</h1>
+
+<form method="post" action="." enctype="multipart/form-data" class="space-y-6 bg-gradient-to-r from-teal-500 to-blue-500 p-8 rounded-xl shadow-lg mx-auto max-w-3xl">
+    {% csrf_token %}
+
+    <div class="space-y-6">
+
+        <!-- Item Name Field -->
+        <div class="form-control">
+            <label for="id_name" class="form-label text-white">Item Name</label>
+            <input type="text" name="name" value="{{ form.name.value|default_if_none:'' }}" placeholder="Enter item name" class="w-full py-4 px-6 bg-teal-100 text-teal-800 border-2 border-teal-500 rounded-xl focus:ring-teal-700 focus:outline-none mx-auto block">
+            {% for error in form.name.errors %}
+                <div class="text-sm text-red-600">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Item Description Field -->
+        <div class="form-control">
+            <label for="id_description" class="form-label text-white">Description</label>
+            <textarea name="description" placeholder="Enter item description" class="w-full py-4 px-6 bg-teal-100 text-teal-800 border-2 border-teal-500 rounded-xl focus:ring-teal-700 focus:outline-none mx-auto block">{{ form.description.value|default_if_none:'' }}</textarea>
+            {% for error in form.description.errors %}
+                <div class="text-sm text-red-600">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Item Price Field -->
+        <div class="form-control">
+            <label for="id_price" class="form-label text-white">Price (in INR)</label>
+            <div class="flex items-center">
+                <span class="text-gray-500">₹</span>
+                <input type="number" name="price" value="{{ form.price.value }}" placeholder="Enter item price" class="w-full py-4 px-6 bg-teal-100 text-teal-800 border-2 border-teal-500 rounded-xl focus:ring-teal-700 focus:outline-none mx-auto block">
+            </div>
+            {% for error in form.price.errors %}
+                <div class="text-sm text-red-600">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- Item Image Field -->
+        <div class="form-control">
+            <label for="id_image" class="form-label text-white">Image</label>
+            <input type="file" name="image" class="w-full py-4 px-6 bg-teal-100 text-teal-800 border-2 border-teal-500 rounded-xl focus:ring-teal-700 focus:outline-none mx-auto block">
+            {% for error in form.image.errors %}
+                <div class="text-sm text-red-600">{{ error }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Form Errors (Overall form errors, if any) -->
+    {% if form.non_field_errors %}
+        <div class="p-4 bg-red-600 text-white rounded-xl mt-6">
+            <div class="text-sm">{{ form.non_field_errors }}</div>
+        </div>
+    {% endif %}
+
+    <!-- Submit Button -->
+    <button type="submit" class="mt-6 py-3 px-6 text-lg bg-teal-600 hover:bg-teal-700 rounded-xl text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500 mx-auto block">Submit</button>
+</form>
+
+{% endblock %}
