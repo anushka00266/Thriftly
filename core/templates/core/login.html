@@ -3,14 +3,14 @@
 {% block title %}Log in{% endblock %}
 
 {% block content %}
-<div class="w-1/3 my-6 mx-auto p-6 bg-gradient-to-r from-teal-400 to-blue-500 rounded-xl shadow-lg">
-    <h1 class="mb-6 text-3xl font-semibold text-white text-center">Log in</h1>
+<div class="w-full max-w-md mx-auto my-6 p-6 bg-gradient-to-r from-teal-400 to-blue-500 rounded-xl shadow-lg">
+    <h1 class="mb-6 text-2xl sm:text-3xl font-semibold text-white text-center">Log in</h1>
 
     <form method="post" action=".">
         {% csrf_token %}
 
         <div class="mb-4">
-            <label class="inline-block mb-2 text-white">Username</label><br>
+            <label class="inline-block mb-2 text-white">Username</label>
             <input type="text" name="username" class="w-full px-4 py-2 bg-white rounded-xl border-2 {% if form.username.errors %}border-red-600{% else %}border-teal-500{% endif %} focus:border-teal-700 focus:outline-none text-black" placeholder="Enter your username" value="{{ form.username.value|default:'' }}">
             {% if form.username.errors %}
                 <p class="text-red-600 text-sm mt-2">{{ form.username.errors }}</p>
@@ -18,7 +18,7 @@
         </div>
 
         <div class="mb-4">
-            <label class="inline-block mb-2 text-white">Password</label><br>
+            <label class="inline-block mb-2 text-white">Password</label>
             <input type="password" name="password" class="w-full px-4 py-2 bg-white rounded-xl border-2 {% if form.password.errors %}border-red-600{% else %}border-teal-500{% endif %} focus:border-teal-700 focus:outline-none text-black" placeholder="Enter your password">
             {% if form.password.errors %}
                 <p class="text-red-600 text-sm mt-2">{{ form.password.errors }}</p>
@@ -39,7 +39,7 @@
             </div>
         {% endif %}
 
-        <button type="submit" class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 transition-all duration-300 rounded-xl text-white w-full mt-6">Submit</button>
+        <button type="submit" class="py-3 sm:py-4 px-6 sm:px-8 text-base sm:text-lg bg-teal-500 hover:bg-teal-700 transition-all duration-300 rounded-xl text-white w-full mt-6">Submit</button>
     </form>
 </div>
 {% endblock %}
