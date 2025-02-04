@@ -64,7 +64,7 @@
 
 <div class="container mx-auto px-6 py-12">
     <div class="form-container">
-        <h1 class="text-3xl font-semibold text-teal-600 mb-6">Shipping Details for {{ item.name }}</h1>
+        <h1 class="text-3xl font-semibold text-teal-600 mb-6 text-center">Shipping Details for {{ item.name }}</h1>
 
         <form method="POST">
             {% csrf_token %}
@@ -93,7 +93,7 @@
                 <input type="text" name="postal_code" class="custom-form-input" id="id_postal_code" placeholder="Enter your postal code">
             </div>
 
-            <button type="submit" class="form-button mt-6">Confirm Shipping Details</button>
+            <button type="submit" class="form-button mt-6 w-full">Confirm Shipping Details</button>
         </form>
     </div>
 </div>
