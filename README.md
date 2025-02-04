@@ -43,28 +43,14 @@ source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 Step 3: Install Dependencies
 pip install -r requirements.txt
 
-Step 4: Configure Database
-1.Create a MySQL database named thriftly_db.
-2.Update DATABASES settings in settings.py:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'thriftly_db',
-        'USER': 'your-username',
-        'PASSWORD': 'your-password',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-
-Step 5: Apply Migrations
+Step 4: Apply Migrations
 python manage.py makemigrations
 python manage.py migrate
 
-Step 7: Run the Development Server
+Step 5: Run the Development Server
 python manage.py runserver
 
-Step 8: Access the Application
+Step 6: Access the Application
 Open your browser and go to:http://127.0.0.1:8000/
          
    
