@@ -1,4 +1,5 @@
-# Thriftly
+# Thriftly - https://anushka026.pythonanywhere.com/
+
 
 Thriftly is a platform that connects users who want to sell or buy second hand products. It offers an intuitive interface to list, browse, and purchase items, with a special focus on sustainability. The project includes functionality for users to upload new items, manage their listings, purchase items through Cash on Delivery (COD), and communicate with sellers through a chat feature.
 
